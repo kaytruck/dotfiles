@@ -1,5 +1,5 @@
 if has('vim_starting')
-  set nocompatible               " be iMproved
+  set nocompatible
   set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
 
@@ -12,6 +12,7 @@ NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'google/vim-ft-go' "最新版のvimでは組み込み済みのため不要
 NeoBundle 'vim-jp/vim-go-extra'
+NeoBundle 'vim-jp/vimdoc-ja' "ヘルプの日本語化プラグイン
 
 call neobundle#end()
 
@@ -33,6 +34,10 @@ set noswapfile
 
 " インデントを超えて削除、改行を超えて削除、挿入モード開始位置を超えて削除
 set backspace=indent,eol,start
+
+" netrw
+" 常にツリー表示
+let g:netrw_liststyle = 3
 
 " Go言語
 exe "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
