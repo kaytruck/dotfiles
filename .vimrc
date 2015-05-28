@@ -13,6 +13,7 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'google/vim-ft-go' "最新版のvimでは組み込み済みのため不要
 NeoBundle 'vim-jp/vim-go-extra'
 NeoBundle 'vim-jp/vimdoc-ja' "ヘルプの日本語化プラグイン
+NeoBundle 'thinca/vim-quickrun'
 
 call neobundle#end()
 
