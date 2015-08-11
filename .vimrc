@@ -43,7 +43,7 @@ let g:netrw_liststyle = 3
 " Go言語
 exe "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
 
-"##### auto fcitx  ###########
+" vi協調モード
 let g:input_toggle = 1
 function! Fcitx2en()
    let s:input_status = system("fcitx-remote")
@@ -64,4 +64,3 @@ endfunction
 set ttimeoutlen=150
 autocmd InsertLeave * call Fcitx2en()
 autocmd InsertEnter * call Fcitx2ja()
-"##### auto fcitx end ######
