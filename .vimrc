@@ -62,5 +62,7 @@ function! Fcitx2ja()
 endfunction
 
 set ttimeoutlen=150
+" ノーマルモードでIMEオフ
 autocmd InsertLeave * call Fcitx2en()
-autocmd InsertEnter * call Fcitx2ja()
+" 挿入モードでIMEオン
+"autocmd InsertEnter * call Fcitx2ja()
