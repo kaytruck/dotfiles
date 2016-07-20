@@ -44,26 +44,50 @@ autocmd InsertLeave * call Fcitx2en()
 "----------------------------------------------------------
 "プラグインの導入
 "----------------------------------------------------------
-if has('vim_starting')
-  set nocompatible
-  set runtimepath+=~/.vim/bundle/neobundle.vim
+"dein Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
 endif
-call neobundle#begin(expand('~/.vim/bundle/'))
-NeoBundleFetch 'Shougo/neobundle.vim'
 
-"Bundles
-NeoBundle 'Shougo/vimproc'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'google/vim-ft-go' "最新版のvimでは組み込み済みのため不要
-NeoBundle 'vim-jp/vim-go-extra'
-NeoBundle 'vim-jp/vimdoc-ja' "ヘルプの日本語化プラグイン
-NeoBundle 'thinca/vim-quickrun'
+" Required:
+set runtimepath^=/home/kta/.vim/dein/repos/github.com/Shougo/dein.vim
 
-call neobundle#end()
-syntax on
+" Required:
+call dein#begin(expand('/home/kta/.vim/dein'))
+
+" Let dein manage dein
+" Required:
+call dein#add('Shougo/dein.vim')
+
+" Add or remove your plugins here:
+call dein#add('Shougo/neosnippet.vim')
+call dein#add('Shougo/neosnippet-snippets')
+call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
+call dein#add('Shougo/unite.vim')
+call dein#add('google/vim-ft-go') "最新版のvimでは組み込み済みのため不要らしい
+call dein#add('vim-jp/vim-go-extra')
+call dein#add('vim-jp/vimdoc-ja') "ヘルプの日本語化プラグイン
+call dein#add('thinca/vim-quickrun')
+
+" You can specify revision/branch/tag.
+call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+
+" Required:
+call dein#end()
+
+" Required:
 filetype plugin indent on
-NeoBundleCheck
 
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+  call dein#install()
+endif
+
+"End dein Scripts-------------------------
+
+"----------------------------------------------------------
+"プラグインの設定
+"----------------------------------------------------------
 " netrw
 " 常にツリー表示
 let g:netrw_liststyle = 3
