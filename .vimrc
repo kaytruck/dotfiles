@@ -41,6 +41,11 @@ autocmd InsertLeave * call Fcitx2en()
 " 挿入モードでIMEオン
 "autocmd InsertEnter * call Fcitx2ja()
 
+function! ImDisactivate()
+	call system('fcitx-remote -c')
+endfunction
+inoremap <silent> <ESC>:call ImDisactivate()<CR>
+
 "----------------------------------------------------------
 "プラグインの導入
 "----------------------------------------------------------
@@ -52,25 +57,31 @@ endif
 " Required:
 set runtimepath^=/home/kta/.vim/dein/repos/github.com/Shougo/dein.vim
 
+"let s:toml_file = expand('/home/kta/.vim/rc/dein.toml')
+
 " Required:
 call dein#begin(expand('/home/kta/.vim/dein'))
+
 
 " Let dein manage dein
 " Required:
 call dein#add('Shougo/dein.vim')
 
+"call dein#load_toml(s:toml_file)
+
 " Add or remove your plugins here:
-call dein#add('Shougo/neosnippet.vim')
-call dein#add('Shougo/neosnippet-snippets')
+"call dein#add('Shougo/neosnippet.vim')
+"call dein#add('Shougo/neosnippet-snippets')
 call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 call dein#add('Shougo/unite.vim')
+"call dein#add('Shougo/vimshell')
+call dein#add('Shougo/neocomplete.vim')
 call dein#add('google/vim-ft-go') "最新版のvimでは組み込み済みのため不要らしい
 call dein#add('vim-jp/vim-go-extra')
 call dein#add('vim-jp/vimdoc-ja') "ヘルプの日本語化プラグイン
 call dein#add('thinca/vim-quickrun')
-
-" You can specify revision/branch/tag.
-call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+call dein#add('lambdalisue/vim-pyenv')
+call dein#add('davidhalter/jedi-vim')
 
 " Required:
 call dein#end()
@@ -94,4 +105,12 @@ let g:netrw_liststyle = 3
 
 " Go言語
 exe "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
+
+" vim-quickrun
+let g:quickrun_config = {
+			\ "_" : {
+			\	"outputter/buffer/split" : ":botright",
+			\	"outputter/buffer/close_on_empty" : 1
+			\ },
+			\}
 
